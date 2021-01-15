@@ -42,6 +42,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d96698c857a2b9140ac6a604741a722e, type: 3}
   - {fileID: 21300000, guid: 7a1c958af494aa747a8bc9e2ea91463b, type: 3}
   - {fileID: 21300000, guid: 2848c0ea94cb28747ae1a44f5ea7dd4d, type: 3}
+  - {fileID: 21300000, guid: 078ae53d904dbda4a8c894144bf22fea, type: 3}
   m_PackedSpriteNamesToIndex:
   - Puzzle_Line_02
   - Puzzle_Line_04
@@ -49,5 +50,6 @@ SpriteAtlas:
   - Puzzle_Line_05
   - Puzzle_Line
   - Puzzle_Line_03
+  - Tile
   m_Tag: BG
   m_IsVariant: 0

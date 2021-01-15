@@ -44,7 +44,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0e29337036390964a8677c9c0d5221f1, type: 3}
   - {fileID: 21300000, guid: f534b801a0633c94db3f689d7837aabb, type: 3}
   - {fileID: 21300000, guid: 6759241116b42b049b277e0826b18509, type: 3}
-  - {fileID: 21300000, guid: e5236e212b9ec2b4187a0676ab127148, type: 3}
   - {fileID: 21300000, guid: 24523e31ec276f34d9175af4484c2572, type: 3}
   - {fileID: 21300000, guid: 1b42e2412bbad804ea7415615cf3f96c, type: 3}
   - {fileID: 21300000, guid: f070df124758328418d93e83b0ba3542, type: 3}
@@ -64,8 +63,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bacb0e48719720f48a8ea3728a7931ef, type: 3}
   - {fileID: 21300000, guid: a2450b9853bb1bb42b5091a60a4e336b, type: 3}
   - {fileID: 21300000, guid: 655dfbe8838c8c14d905ba91bfc0d68d, type: 3}
-  - {fileID: 21300000, guid: bd3ab829917a53d4382950661bbafeca, type: 3}
-  - {fileID: 21300000, guid: 7513900af02b7f04daea71eaf1b9ee1f, type: 3}
   - {fileID: 21300000, guid: 81167c2ac0c73f548bc138612cd1cc41, type: 3}
   - {fileID: 21300000, guid: c2c9937ae830ae545a352091fdd75db9, type: 3}
   - {fileID: 21300000, guid: 5caf0a1baf5603f49bca0bae72c3fd54, type: 3}
@@ -73,7 +70,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 28a33d5bf9e1f244ba071cb07016bb3d, type: 3}
   - {fileID: 21300000, guid: b22b549b6b331634db8f58653dd11734, type: 3}
   - {fileID: 21300000, guid: 5702c3db77a1c9b40b26c907fb3233c5, type: 3}
-  - {fileID: 21300000, guid: 5ccbdafbbb52e904c9e6f3bdfdf0578c, type: 3}
   - {fileID: 21300000, guid: 7f9a3b0cbbcf90a46a523fd0aeabef59, type: 3}
   - {fileID: 21300000, guid: 0afc104c303495b41b8bfef0c63865e5, type: 3}
   - {fileID: 21300000, guid: 8c51675cabdfe774f95064a5c83d8001, type: 3}
@@ -86,7 +82,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 690074cee04682d47a4cc49b6706b9e6, type: 3}
   - {fileID: 21300000, guid: e8eb9cfe40c9d1045bc7aa805d0747cb, type: 3}
   - {fileID: 21300000, guid: 49278b9fb675227499f8abe0b4de708c, type: 3}
-  - {fileID: 21300000, guid: af42d5bfa6278aa448e5b5edf4266b9c, type: 3}
   - {fileID: 21300000, guid: 493c0ebf70ab9b641aac1775104d361f, type: 3}
   m_PackedSpriteNamesToIndex:
   - Puzzle_Polygon_02_02
@@ -97,7 +92,6 @@ SpriteAtlas:
   - Puzzle_Polygon_01_16
   - Puzzle_Polygon_01_03
   - Puzzle_Polygon_01_14
-  - Puzzle_Polygon_050
   - Puzzle_Polygon_05_Effect
   - Puzzle_Polygon_02_05
   - Puzzle_Polygon_01_02
@@ -117,8 +111,6 @@ SpriteAtlas:
   - Puzzle_Polygon_01_On
   - Puzzle_Polygon_01_12
   - Puzzle_Polygon_04_On
-  - Puzzle_Polygon_030
-  - Puzzle_Polygon_040
   - Puzzle_Polygon_04_03
   - Puzzle_Polygon_04
   - Puzzle_Polygon_05_04
@@ -126,7 +118,6 @@ SpriteAtlas:
   - Puzzle_Polygon_03_02
   - Puzzle_Polygon_02_04
   - Puzzle_Polygon_04_01
-  - Puzzle_Polygon_010
   - Puzzle_Polygon_05_05
   - Puzzle_Polygon_02
   - Puzzle_Polygon_01_06
@@ -139,7 +130,6 @@ SpriteAtlas:
   - Puzzle_Polygon_05_03
   - Puzzle_Polygon_03_03
   - Puzzle_Polygon_03_On
-  - Puzzle_Polygon_020
   - Puzzle_Polygon_02_On
   m_Tag: Block
   m_IsVariant: 0
