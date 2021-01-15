@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BG
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 53df3e7a6648f97449c911717cec1c9a, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: f628fff1d4ed47344abe15d204c5e104, type: 3}
+  - {fileID: 21300000, guid: 4473001342b1681498b50b84c1c11bb7, type: 3}
+  - {fileID: 21300000, guid: e89e0dd35090d0f4ca16c6c41f67a3cd, type: 3}
+  - {fileID: 21300000, guid: d96698c857a2b9140ac6a604741a722e, type: 3}
+  - {fileID: 21300000, guid: 7a1c958af494aa747a8bc9e2ea91463b, type: 3}
+  - {fileID: 21300000, guid: 2848c0ea94cb28747ae1a44f5ea7dd4d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Puzzle_Line_02
+  - Puzzle_Line_04
+  - Puzzle_Line_01
+  - Puzzle_Line_05
+  - Puzzle_Line
+  - Puzzle_Line_03
+  m_Tag: BG
+  m_IsVariant: 0
