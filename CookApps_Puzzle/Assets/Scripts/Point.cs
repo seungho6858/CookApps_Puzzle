@@ -10,7 +10,7 @@ public class Point : BaseComponent
 
     [SerializeField] private Transform[] _points;
 
-    [SerializeField] private Block _block;
+    [SerializeField] protected Block _block;
 
     public Transform _trBlock;
     public Text _text;
@@ -92,7 +92,7 @@ public class Point : BaseComponent
             return block._isMoving ? Near_State.Block_Moving : Near_State.Block_Exist;
     }
 
-    public Point Request_Block() // 나의 빈자리를 채워줄 블럭 (Return : Empty가 된 타일)
+    public virtual Point Request_Block() // 나의 빈자리를 채워줄 블럭 (Return : Empty가 된 타일)
     {
         if (Global._gameState != Game_State.Playing)
             return null;
@@ -115,7 +115,7 @@ public class Point : BaseComponent
                     // 위 상태 확인
                     Near_State candidateState = point.Get_NearState(Dir.U); 
 
-                    if (candidateState == Near_State.Block_Exist || candidateState == Near_State.Block_Moving)
+                    if (candidateState == Near_State.Block_Exist)
                         continue;
 
                     // 후보의 아래 상태 확인

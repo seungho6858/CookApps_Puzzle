@@ -138,7 +138,7 @@ public class Block : BaseComponent
 
     private IEnumerator Move(Vector3 vDir, Vector3 vEnd, System.Action finish)
     {
-        float time = 1f; // 이동 시간
+        float time = 0.3f; // 이동 시간
 
         _isMoving = true;
         vDir /= time;
