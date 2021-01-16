@@ -10,6 +10,10 @@ public class Block : BaseComponent
     public float _dragLength;
     public bool _isMoving;
 
+    public delegate void MoveBlock(Block block);
+
+    public static MoveBlock _blockMoved;
+
     [SerializeField] private Point _point;
     private Vector3 _vDragInit;
     private bool _dragging;
@@ -74,9 +78,9 @@ public class Block : BaseComponent
         yield return new WaitUntil(() => finish == 2);
         //
 
-        HashSet<Block> explodes = MapManager.instance.Get_Explodes();
+        bool success = MapManager.instance.Check_Explodes();
 
-        if (explodes.Count == 0) // 실패!
+        if (!success) // 실패!
         {
             finish = 0;
             nearPoint = originPoint;
@@ -90,36 +94,7 @@ public class Block : BaseComponent
         }
         else // 성공
         {
-            List<Point> points = new List<Point>();
-
-            foreach (var block in explodes)
-            {
-                points.Add(block.Get_Point());
-                block.Explode(); // 먼저 Block들을 회수시킨다
-            }
-
-            Request(points);
-
-            void Request(List<Point> requests)
-            {
-                if (requests.Count == 0)
-                    return;
-
-                List<Point> next = new List<Point>();
-
-                for (int i = 0; i < requests.Count; ++i) // 회수된 Tile들의 빈자리를 채워준다
-                {
-                    Point empty = requests[i].Request_Block();
-                    Set_Point(null);
-
-                    if (null != empty)
-                        next.Add(empty);
-                }
-
-                Request(next);
-            }
-
-            
+            _blockMoved?.Invoke(this);
         }
     }
 

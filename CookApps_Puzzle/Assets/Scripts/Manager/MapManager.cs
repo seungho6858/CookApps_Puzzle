@@ -41,7 +41,7 @@ public class MapManager : Singleton_Awake<MapManager>
         _block.raycastTarget = b;
     }
 
-    public HashSet<Block> Get_Explodes() // 현재 맵에서 터질 수 있는 Block들 체크 & Return
+    private HashSet<Block> Get_Explodes() // 현재 맵에서 터질 수 있는 Block들 체크 & Return
     {
         HashSet<Block> explodes = new HashSet<Block>();
 
@@ -59,5 +59,43 @@ public class MapManager : Singleton_Awake<MapManager>
         }
 
         return explodes;
+    }
+
+    public bool Check_Explodes()
+    {
+        HashSet<Block> explodes = MapManager.instance.Get_Explodes();
+
+        if (explodes.Count == 0)
+            return false;
+        
+        List<Point> points = new List<Point>();
+
+        foreach (var block in explodes)
+        {
+            points.Add(block.Get_Point());
+            block.Explode(); // 먼저 Block들을 회수시킨다
+        }
+
+        Request(points);
+
+        void Request(List<Point> requests)
+        {
+            if (requests.Count == 0)
+                return;
+
+            List<Point> next = new List<Point>();
+
+            for (int i = 0; i < requests.Count; ++i) // 회수된 Tile들의 빈자리를 채워준다
+            {
+                Point empty = requests[i].Request_Block();
+
+                if (null != empty)
+                    next.Add(empty);
+            }
+
+            Request(next);
+        }
+
+        return true;
     }
 }

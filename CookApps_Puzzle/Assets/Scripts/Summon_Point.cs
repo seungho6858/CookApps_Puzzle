@@ -19,6 +19,11 @@ public class Summon_Point : Point
 
             if (!Is_Block())
                 Request_Block();
+            else
+            {
+                if(!MapManager.instance.Check_Explodes())
+                    MapManager.instance.Restrict_Input(false);
+            }
         });
 
         return null;

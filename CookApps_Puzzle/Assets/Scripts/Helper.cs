@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Helper : MonoBehaviour
 {
+    private static readonly List<List<Dir>> _match4 = new List<List<Dir>>()
+    {
+        new List<Dir>() { Dir.LD, Dir.U, Dir.RU},
+        new List<Dir>() { Dir.U, Dir.RD, Dir.D},
+        new List<Dir>() { Dir.RD, Dir.LD, Dir.LU},
+    };
+    
     public static Block_Type Get_RandBlock()
     {
         return (Block_Type)Random.Range(0, (int)Block_Type.Max);
@@ -30,25 +37,31 @@ public class Helper : MonoBehaviour
             return Dir.U;
     }
     
-    public static List<Block> Get_Explosive(Block block) // 특정 방향으로 3-Match
+    public static List<Block> Get_Explosive(Block block) // 특정 방향으로 3-Match, 4-Match
     {
         Block_Type type = block._type;
 
         List<Block> explodes = new List<Block>();
-
+        
         for(int i=0; i<(int) Dir.Max; ++i)
         {
+            // 3-Match
             List<Block> candidates = new List<Block>();
-
-            Check((Dir)i, block, ref candidates);
+            
+            Match_3((Dir)i, block, ref candidates);
 
             if (candidates.Count >= 3)
                 explodes.AddRange(candidates);
         }
-
+        
+        // 4-Match
+        {
+            Match_4(block, ref explodes);
+        }
+        
         return explodes;
 
-        void Check(Dir dir, Block _block, ref List<Block> candidates)
+        void Match_3(Dir dir, Block _block, ref List<Block> candidates)
         {
             candidates.Add(_block);
 
@@ -60,9 +73,79 @@ public class Helper : MonoBehaviour
             Block nearBlock = nearPoint.Get_Block();
 
             if (nearBlock._type == type) // 같은 타입!
-                Check(dir, nearBlock, ref candidates);
+                Match_3(dir, nearBlock, ref candidates);
             else
                 return;
+        }
+
+        void Match_4(Block _block, ref List<Block> candidates)
+        {
+            for (int i = 0; i < _match4.Count; ++i)
+            {
+                List<Block> blocks = new List<Block>();
+
+                Find_4(_match4[i], 0, _block, ref blocks);
+
+                if (blocks.Count >= 3) // 4_match 가 성공하면, 주변에 맞닿은 모든 블럭도 포함이 된다
+                {
+                    Find_All(_block, ref candidates);
+                }
+            }
+
+            void Find_4(List<Dir> dirs, int idx, Block standardBlock, ref List<Block> blocks)
+            {
+                if (dirs.Count <= idx)
+                    return;
+                
+                Dir dir = dirs[idx];
+
+                Point nearPoint = standardBlock.Get_Point().Get_NearPoint(dir);
+                    
+                if (null == nearPoint) // 해당 방향으로 블럭 x
+                    return;
+
+                Block nearBlock = nearPoint.Get_Block();
+                if (nearBlock._type != type)
+                    return;
+                
+                blocks.Add(nearBlock);
+
+                Find_4(dirs, idx + 1, nearBlock, ref blocks);
+            }
+
+            void Find_All(Block startBlock, ref List<Block> blocks)
+            {
+                blocks.Add(startBlock);
+                
+                for (int i = 0; i < (int) Dir.Max; ++i)
+                {
+                    Point nearPoint = _block.Get_Point().Get_NearPoint((Dir)i);
+                    
+                    if(null == nearPoint)
+                        continue;
+
+                    Block nearBlock = nearPoint.Get_Block();
+                    if (nearBlock._type != type)
+                        continue;
+
+                    if (blocks.Contains(nearBlock))
+                        continue;
+
+                    blocks.Add(startBlock);
+
+                    Find_All(nearBlock, ref blocks);
+                }
+            }
+        }
+
+        bool Check_Same(Block standardBlock, Dir dir)
+        {
+            Point nearPoint = standardBlock.Get_Point().Get_NearPoint(dir);
+
+            if (null == nearPoint)
+                return false;
+
+            return nearPoint.Get_Block()._type == type;
         }
     }
 }
