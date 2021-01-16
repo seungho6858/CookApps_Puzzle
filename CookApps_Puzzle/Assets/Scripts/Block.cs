@@ -8,6 +8,7 @@ public class Block : BaseComponent
 
     public Block_Type _type;
     public float _dragLength;
+    public bool _isMoving;
 
     [SerializeField] private Point _point;
     private Vector3 _vDragInit;
@@ -73,7 +74,7 @@ public class Block : BaseComponent
         yield return new WaitUntil(() => finish == 2);
         //
 
-        List<Block> explodes = MapManager.instance.Get_Explodes();
+        HashSet<Block> explodes = MapManager.instance.Get_Explodes();
 
         if (explodes.Count == 0) // 실패!
         {
@@ -89,16 +90,40 @@ public class Block : BaseComponent
         }
         else // 성공
         {
-            explodes.ForEach(x => x.Explode());
+            List<Point> points = new List<Point>();
 
-            MapManager.instance.Go_Down( () => 
+            foreach (var block in explodes)
             {
-                MapManager.instance.Restrict_Input(false); // user input
-            });
+                points.Add(block.Get_Point());
+                block.Explode(); // 먼저 Block들을 회수시킨다
+            }
+
+            Request(points);
+
+            void Request(List<Point> requests)
+            {
+                if (requests.Count == 0)
+                    return;
+
+                List<Point> next = new List<Point>();
+
+                for (int i = 0; i < requests.Count; ++i) // 회수된 Tile들의 빈자리를 채워준다
+                {
+                    Point empty = requests[i].Request_Block();
+                    Set_Point(null);
+
+                    if (null != empty)
+                        next.Add(empty);
+                }
+
+                Request(next);
+            }
+
+            
         }
     }
 
-    public void Move(Point nearPoint, System.Action finish) // 이동
+    public void Move(Point nearPoint, System.Action finish) // 이동 by hand
     {
         Vector3 vDir = nearPoint.Get_Pos() - Get_Pos();
 
@@ -111,12 +136,11 @@ public class Block : BaseComponent
             }));
     }
 
-
-
     private IEnumerator Move(Vector3 vDir, Vector3 vEnd, System.Action finish)
     {
-        float time = 0.2f; // 이동 시간
+        float time = 1f; // 이동 시간
 
+        _isMoving = true;
         vDir /= time;
 
         while (true)
@@ -131,14 +155,64 @@ public class Block : BaseComponent
         }
 
         _Tr.position = vEnd;
+        _isMoving = false;
 
         finish.Invoke();
     }
 
-    // 밑으로 내려가자
-    public void Check_Down(Point point, System.Action finish) 
+    // 아래로 내려가줄지 판단
+    public void Check_Down(System.Action finish)
     {
-        Move(point, finish);
+        List<Dir> candidates = new List<Dir>() { Dir.D }; // 바로 아래부터 체크
+        candidates.AddRange(Random.Range(0, 2) == 0 ? new List<Dir>() { Dir.RD, Dir.LD } : new List<Dir>() { Dir.LD, Dir.RD }); // 좌, 우 체크는 랜덤
+
+        for (int i = 0; i < candidates.Count; ++i)
+        {
+            Near_State state = Get_Point().Get_NearState(candidates[i]);
+
+            if (state == Near_State.Block_NonExist)
+            {
+                Point point = Get_Point().Get_NearPoint(candidates[i]); // 내려갈 곳이 있다!
+
+                if(candidates[i] != Dir.D) // 좌,우 이동인 경우 내 머리위에 블럭이 없어야함 + 이동할 블럭 머리위에서 내려올 수 있는 기회를 뺏으면 안됨
+                {
+                    Near_State candidateState = Get_Point().Get_NearState(Dir.U);
+
+                    if (candidateState == Near_State.Block_Exist) // 내 위에 블럭이 있으면 내려가지 못한다
+                        continue;
+
+                    candidateState = point.Get_NearState(Dir.U);
+
+                    if (candidateState == Near_State.Block_Exist || candidateState == Near_State.Block_Moving)
+                        continue;
+                }
+
+                Go_Down(point, finish);
+                break;
+            }
+        }
+
+        finish.Invoke(); // 아래로 갈 수 없음
     }
 
+    // 밑으로 내려가자
+    public void Go_Down(Point dstPoint, System.Action finish) // 이동 by AI
+    {
+        Point srcPoint = Get_Point();
+
+        Debug.Log(" : " + srcPoint.name + " -> " + dstPoint);
+
+        Vector3 vDir = dstPoint.Get_Pos() - Get_Pos();
+
+        dstPoint.Set_Block(this); // 내 자리임을 선언
+
+        srcPoint.Relase_Block();
+        //srcPoint.Request_Block(); // 내가 가버리면서 빈 블럭을 채운다
+
+        StartCoroutine(Move(vDir, dstPoint.Get_Pos(),
+            () =>
+            {
+                Check_Down(finish); // 더 내려갈 수 있는지 판단
+            }));
+    }
 }

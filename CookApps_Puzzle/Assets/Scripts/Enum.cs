@@ -18,3 +18,20 @@ public enum Dir
     LD,
     Max
 }
+
+public enum Near_State
+{
+    Empty,
+    Block_Exist,
+    Block_NonExist,
+    Block_Moving,
+    Max
+}
+
+public enum Game_State
+{
+    Ready, // 맵 생성중
+    Playing, // 플레이 중
+    Pause,
+    Max
+}

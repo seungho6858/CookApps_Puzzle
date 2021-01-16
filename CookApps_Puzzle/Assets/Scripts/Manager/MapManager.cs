@@ -16,6 +16,8 @@ public class MapManager : Singleton_Awake<MapManager>
 
     private void Start()
     {
+        Global._gameState = Game_State.Ready;
+
         while(true)
         {
             _listPoints.ForEach(x => x.Spawn_Block());
@@ -25,6 +27,8 @@ public class MapManager : Singleton_Awake<MapManager>
 
             _listPoints.ForEach(x => x.Return_Block());
         }
+
+        Global._gameState = Game_State.Playing;
     }
 
     public Point Get_Point(int pos)
@@ -37,42 +41,23 @@ public class MapManager : Singleton_Awake<MapManager>
         _block.raycastTarget = b;
     }
 
-    public List<Block> Get_Explodes()
+    public HashSet<Block> Get_Explodes() // 현재 맵에서 터질 수 있는 Block들 체크 & Return
     {
-        List<Block> explodes = new List<Block>();
+        HashSet<Block> explodes = new HashSet<Block>();
 
-        for (int i = 0; i < _listPoints.Count; ++i)
+        for (int i = _listPoints.Count - 1; i >= 0; --i)
         {
             Block block = _listPoints[i].Get_Block();
 
-            explodes.AddRange(Helper.Get_Explosive(block));
-        }
+            List<Block> candidates = Helper.Get_Explosive(block);
 
-        return explodes;
-    }
-
-    public void Go_Down(System.Action finish)
-    {
-        StartCoroutine(Check_Down(finish));
-    }
-
-    public IEnumerator Check_Down(System.Action finish) // 빈 Tile 들을 채워준다
-    {
-        int cnt = 0;
-        
-        for (int i = 0; i < _listPoints.Count; ++i)
-        {
-            if(!_listPoints[i].Is_Block())
+            if(candidates.Count != 0)
             {
-                Point help = _listPoints[i].Request_Down(); // 도와줄 Tile
-
-                cnt++;
-                help.Block_Down(_listPoints[i], () => cnt--);
+                for (int j = 0; j < candidates.Count; ++j)
+                    explodes.Add(candidates[j]);
             }
         }
 
-        yield return new WaitUntil(() => cnt == 0);
-
-        finish.Invoke();
+        return explodes;
     }
 }
