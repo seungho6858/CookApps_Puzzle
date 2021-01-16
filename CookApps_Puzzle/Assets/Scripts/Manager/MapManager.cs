@@ -18,10 +18,18 @@ public class MapManager : Singleton_Awake<MapManager>
     {
         Global._gameState = Game_State.Ready;
 
+        int[] spinBlock = Helper.Pick_Random(_listPoints.Count,6); // 맵에 6개는 Spin-Block
+        
         while(true)
         {
-            _listPoints.ForEach(x => x.Spawn_Block());
-
+            for (int i = 0; i < _listPoints.Count; ++i)
+            {
+                if (System.Array.Exists(spinBlock, x => x == i))
+                    _listPoints[i].Spawn_Block(Block_Type.Spin);
+                else
+                    _listPoints[i].Spawn_Block(Helper.Get_RandBlock());
+            }
+            
             if (Get_Explodes().Count == 0)
                 break;
 
@@ -75,6 +83,17 @@ public class MapManager : Singleton_Awake<MapManager>
             points.Add(block.Get_Point());
             block.Explode(); // 먼저 Block들을 회수시킨다
         }
+        
+        // 터진 블록들 중에서 주변에 '공격' 받을 블럭이 있었는지?
+        HashSet<Block> spins = new HashSet<Block>();
+        foreach (var block in explodes)
+            Helper.Check_Damaged(ref spins, block);
+        foreach (var spinBlock in spins)
+        {
+            if(spinBlock.Get_Damage()) // '공격' 받아서 파괴된 블럭
+                points.Add(spinBlock.Get_Point());
+        }
+            
 
         Request(points);
 

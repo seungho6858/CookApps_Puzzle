@@ -1,10 +1,15 @@
 ﻿public enum Block_Type
 {
+    // Normal
     Green = 0,
     Yellow,
     Purple,
     Blue,
     Red,
+    
+    // Special
+    Spin,
+    
     Max
 }
 

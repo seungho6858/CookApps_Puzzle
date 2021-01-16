@@ -10,7 +10,7 @@ public class Summon_Point : Point
     [ContextMenu("Summon")]
     public override Point Request_Block()
     {
-        Spawn_Block();
+        Spawn_Block(Helper.Get_RandBlock());
 
         _block.Set_Pos(_summonPos.position);
         _block.Move(this, () =>
@@ -27,18 +27,5 @@ public class Summon_Point : Point
         });
 
         return null;
-    }
-
-    public void Test()
-    {
-        Spawn_Block();
-
-        _block.Check_Down(() => { });
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-            Test();
     }
 }

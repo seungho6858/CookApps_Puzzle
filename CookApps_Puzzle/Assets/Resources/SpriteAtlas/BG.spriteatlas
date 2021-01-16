@@ -41,17 +41,19 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4473001342b1681498b50b84c1c11bb7, type: 3}
   - {fileID: 21300000, guid: e89e0dd35090d0f4ca16c6c41f67a3cd, type: 3}
   - {fileID: 21300000, guid: d96698c857a2b9140ac6a604741a722e, type: 3}
+  - {fileID: 21300000, guid: e5dc1ea9bf92845a381da3fc27d30eff, type: 3}
   - {fileID: 21300000, guid: a100182af9770477f9565e0ab3bddc6d, type: 3}
   - {fileID: 21300000, guid: 7a1c958af494aa747a8bc9e2ea91463b, type: 3}
   - {fileID: 21300000, guid: 2848c0ea94cb28747ae1a44f5ea7dd4d, type: 3}
   - {fileID: 21300000, guid: 078ae53d904dbda4a8c894144bf22fea, type: 3}
   m_PackedSpriteNamesToIndex:
-  - _t_12
+  - Bt_12
   - Puzzle_Line_02
   - Puzzle_Line_04
   - Puzzle_Line_01
   - Puzzle_Line_05
-  - _opupBg3
+  - Spin
+  - PopupBg3
   - Puzzle_Line
   - Puzzle_Line_03
   - Tile

@@ -26,9 +26,9 @@ public class Point : BaseComponent
     }
 
     [ContextMenu("Spawn")]
-    public void Spawn_Block()
+    public void Spawn_Block(Block_Type type)
     {
-        Set_Block(BlockManager.instance.GetBlock(Helper.Get_RandBlock()));
+        Set_Block(BlockManager.instance.GetBlock(type));
         _block.Set_Pos(_Tr.position).SetParent(_trBlock);
     }
 
@@ -176,16 +176,6 @@ public class Point : BaseComponent
         GetComponent<PolygonCollider2D>().enabled = true;
     }
 
-    [ContextMenu("TestSpawn")]
-    public void TestNear()
-    {
-        for (int i = 0; i < _nearPoints.Count; ++i)
-        {
-            if (_nearPoints[i].point != null)
-                _nearPoints[i].point.Spawn_Block();
-        }
-            
-    }
 #endif
 
 }

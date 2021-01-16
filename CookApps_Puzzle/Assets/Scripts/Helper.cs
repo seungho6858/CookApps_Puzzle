@@ -13,7 +13,7 @@ public class Helper : MonoBehaviour
     
     public static Block_Type Get_RandBlock()
     {
-        return (Block_Type)Random.Range(0, (int)Block_Type.Max);
+        return (Block_Type)Random.Range(0, (int)Block_Type.Red + 1);
     }
 
     public static Dir Get_Dir(float angle)
@@ -37,12 +37,40 @@ public class Helper : MonoBehaviour
             return Dir.U;
     }
     
+    public static int[] Pick_Random(int length, int cnt)
+    {
+        List<int> list = new List<int>();
+        for (int i = 0; i < length; ++i)
+            list.Add(i);
+
+        int[] result = new int[cnt];
+
+        for (int i=0; i< cnt; ++i)
+        {
+            int rand = Random.Range(0, list.Count);
+
+            result[i] = list[rand];
+
+            list.RemoveAt(rand);
+        }
+
+        return result;
+    }
+
+    public static bool Is_SpecialBlock(Block_Type type)
+    {
+        return type == Block_Type.Spin;
+    }
+    
     public static List<Block> Get_Explosive(Block block) // 특정 방향으로 3-Match, 4-Match
     {
         Block_Type type = block._type;
 
         List<Block> explodes = new List<Block>();
         
+        if (Is_SpecialBlock(type))
+            return explodes;
+
         for(int i=0; i<(int) Dir.Max; ++i)
         {
             // 3-Match
@@ -146,6 +174,24 @@ public class Helper : MonoBehaviour
                 return false;
 
             return nearPoint.Get_Block()._type == type;
+        }
+    }
+
+    public static void Check_Damaged(ref HashSet<Block> spins, Block block)
+    {
+        for (int i = 0; i < (int) Dir.Max; ++i)
+        {
+            Point nearPoint = block.Get_Point().Get_NearPoint((Dir)i);
+                    
+            if (null == nearPoint) // 해당 방향으로 블럭 x
+                continue;
+
+            Block nearBlock = nearPoint.Get_Block();
+            if (null == nearBlock)
+                continue;
+            
+            if (nearBlock._type == Block_Type.Spin)
+                spins.Add(nearBlock);
         }
     }
 }

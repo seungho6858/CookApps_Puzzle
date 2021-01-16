@@ -27,7 +27,7 @@ public class Block : BaseComponent
         return _point;
     }
 
-    public void Explode()
+    public virtual void Explode()
     {
         _point.Return_Block();
     }
@@ -124,7 +124,7 @@ public class Block : BaseComponent
             if (time <= 0f)
                 break;
 
-            _Tr.Translate(vDir * Time.deltaTime);
+            _Tr.Translate(vDir * Time.deltaTime, Space.World);
 
             yield return null;
         }
@@ -189,5 +189,11 @@ public class Block : BaseComponent
             {
                 Check_Down(finish); // 더 내려갈 수 있는지 판단
             }));
+    }
+
+    // 주변 블럭 파괴로 인해 피해를 입음
+    public virtual bool Get_Damage()
+    {
+        return false;
     }
 }
