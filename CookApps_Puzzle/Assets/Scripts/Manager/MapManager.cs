@@ -30,7 +30,7 @@ public class MapManager : Singleton_Awake<MapManager>
                     _listPoints[i].Spawn_Block(Helper.Get_RandBlock());
             }
             
-            if (Get_Explodes().Count == 0)
+            if (Get_Explodes().Count == 0 && Find_Hint() != null) // 터질 블럭도 없고 & 최소 1개 이상 힌트가 있는 상황
                 break;
 
             _listPoints.ForEach(x => x.Return_Block());
@@ -180,9 +180,20 @@ public class MapManager : Singleton_Awake<MapManager>
 
         yield return null;
 
+        Block.HintInfo hintInfo = Find_Hint();
+
+        if (null == hintInfo)
+            yield break;
+
+        hintInfo.explosive.ForEach(x => x.Show_Lines(true));
+        hintInfo.moveBlock.Move_Hint(hintInfo.moveDir);
+    }
+
+    private Block.HintInfo Find_Hint()
+    {
         int rand = Random.Range(0, _listPoints.Count); // 매번 다른 순서로 힌트 검색
 
-        for(int i = rand ; ; i++)
+        for (int i = rand; ; i++)
         {
             if (i >= _listPoints.Count)
                 i = 0;
@@ -197,12 +208,10 @@ public class MapManager : Singleton_Awake<MapManager>
             if (null == hintInfo)
                 continue;
 
-            hintInfo.explosive.ForEach(x => x.Show_Lines(true));
-            hintInfo.moveBlock.Move_Hint(hintInfo.moveDir);
-
-            break;
+            return hintInfo;
         }
 
+        return null;
     }
 
     public void Hide_Hint()

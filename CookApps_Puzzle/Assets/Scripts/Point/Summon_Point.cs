@@ -22,7 +22,11 @@ public class Summon_Point : Point
             else
             {
                 if(!MapManager.instance.Check_Explodes())
+                {
                     MapManager.instance.Restrict_Input(false);
+                    UIManager.instance.Check_GameOver();
+                }
+                    
             }
         });
 

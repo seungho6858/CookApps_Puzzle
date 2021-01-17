@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class UIManager : Singleton_Awake<UIManager>
 {
     public Popup_Confirm _popup;
-    
+
+    private bool _gameOver;
+
     // Move
     public Text _tMove;
     private int _move;
@@ -20,11 +22,13 @@ public class UIManager : Singleton_Awake<UIManager>
     {
         Check(this);
         
-        _move = 15;
+        _move = 10;
         _tMove.text = _move.ToString();
 
         _spin = 6;
         _tSpin.text = _spin.ToString();
+
+        _gameOver = false;
     }
 
     private void OnEnable()
@@ -43,7 +47,10 @@ public class UIManager : Singleton_Awake<UIManager>
         _tMove.text = _move.ToString();
         
         if(_move == 0)
-            Show_Popup("게임오버", ReGame);
+        {
+            _gameOver = true;
+        }
+            
     }
     
     //
@@ -51,6 +58,12 @@ public class UIManager : Singleton_Awake<UIManager>
     public void Show_Popup(string text, System.Action callBack)
     {
         _popup.Set_Ui(text, callBack);
+    }
+
+    public void Check_GameOver()
+    {
+        if(_gameOver && _spin != 0)
+            Show_Popup("게임오버", ReGame);
     }
 
     public void ReGame()

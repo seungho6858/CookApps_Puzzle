@@ -30,110 +30,12 @@ SpriteAtlas:
       enableTightPacking: 0
     variantMultiplier: 1
     packables:
-    - {fileID: 102900000, guid: 6f133e6c18c562940bd4f16f7d4342b1, type: 3}
+    - {fileID: 102900000, guid: 85697c21d12a544d29115446f39a6d98, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites:
-  - {fileID: 21300000, guid: 679d5e2053b631c45b69a44384418479, type: 3}
-  - {fileID: 21300000, guid: fb83963018fd8dd4399cdfe633acd3b8, type: 3}
-  - {fileID: 21300000, guid: e2048930c0c791b49a21c0a1821542aa, type: 3}
-  - {fileID: 21300000, guid: 5b5bb1405a25e7e409a4795428088397, type: 3}
-  - {fileID: 21300000, guid: 51121260ed169d6479a00be9da4b8ea2, type: 3}
-  - {fileID: 21300000, guid: 0e29337036390964a8677c9c0d5221f1, type: 3}
-  - {fileID: 21300000, guid: f534b801a0633c94db3f689d7837aabb, type: 3}
-  - {fileID: 21300000, guid: 6759241116b42b049b277e0826b18509, type: 3}
-  - {fileID: 21300000, guid: 24523e31ec276f34d9175af4484c2572, type: 3}
-  - {fileID: 21300000, guid: 1b42e2412bbad804ea7415615cf3f96c, type: 3}
-  - {fileID: 21300000, guid: f070df124758328418d93e83b0ba3542, type: 3}
-  - {fileID: 21300000, guid: caf50362fc5766649bbec80e91c7ede0, type: 3}
-  - {fileID: 21300000, guid: 5b948953334da2e4294e7ca0f6d26047, type: 3}
-  - {fileID: 21300000, guid: d5388f838875cb142826c925524160de, type: 3}
-  - {fileID: 21300000, guid: 053856a3700792d44a588c4d8ea07782, type: 3}
-  - {fileID: 21300000, guid: c754f40428f3cfa429b73c5d4c832917, type: 3}
-  - {fileID: 21300000, guid: 6039590414049334bb0ade43e4c3e68f, type: 3}
-  - {fileID: 21300000, guid: adbf98b4848d89145932ca8460935792, type: 3}
-  - {fileID: 21300000, guid: 2f4022351c6255f4e82ab7e2fdf5740b, type: 3}
-  - {fileID: 21300000, guid: 5b2a1f356f5bc2446b4c0272ddafedc8, type: 3}
-  - {fileID: 21300000, guid: a4b0e685107388440af3829860b8264b, type: 3}
-  - {fileID: 21300000, guid: 6040b186fdf83ea40a466cc4af7e82fc, type: 3}
-  - {fileID: 21300000, guid: 130acba66e823754f857f488ad53cdb0, type: 3}
-  - {fileID: 21300000, guid: f2a0c0d7b225d954d938dae126371607, type: 3}
-  - {fileID: 21300000, guid: 90c0aa2808b0e9040a40a6182f03d039, type: 3}
-  - {fileID: 21300000, guid: bacb0e48719720f48a8ea3728a7931ef, type: 3}
-  - {fileID: 21300000, guid: a2450b9853bb1bb42b5091a60a4e336b, type: 3}
-  - {fileID: 21300000, guid: 655dfbe8838c8c14d905ba91bfc0d68d, type: 3}
-  - {fileID: 21300000, guid: e5dc1ea9bf92845a381da3fc27d30eff, type: 3}
-  - {fileID: 21300000, guid: 81167c2ac0c73f548bc138612cd1cc41, type: 3}
-  - {fileID: 21300000, guid: c2c9937ae830ae545a352091fdd75db9, type: 3}
-  - {fileID: 21300000, guid: 5caf0a1baf5603f49bca0bae72c3fd54, type: 3}
-  - {fileID: 21300000, guid: 42535e3b4a478114a9d1e2fbdf9d0c52, type: 3}
-  - {fileID: 21300000, guid: 28a33d5bf9e1f244ba071cb07016bb3d, type: 3}
-  - {fileID: 21300000, guid: b22b549b6b331634db8f58653dd11734, type: 3}
-  - {fileID: 21300000, guid: 5702c3db77a1c9b40b26c907fb3233c5, type: 3}
-  - {fileID: 21300000, guid: 7f9a3b0cbbcf90a46a523fd0aeabef59, type: 3}
-  - {fileID: 21300000, guid: 0afc104c303495b41b8bfef0c63865e5, type: 3}
-  - {fileID: 21300000, guid: 8c51675cabdfe774f95064a5c83d8001, type: 3}
-  - {fileID: 21300000, guid: dbd373ac2259a3644a4205944aa34540, type: 3}
-  - {fileID: 21300000, guid: 9a37feaca82f37e4a86580abf7ca72bc, type: 3}
-  - {fileID: 21300000, guid: 381a3bcc028997f42bc9e385c08aac20, type: 3}
-  - {fileID: 21300000, guid: b826ebcc8c83dfb468b1f1cbd1f76ff6, type: 3}
-  - {fileID: 21300000, guid: 1cfbe62dd99c6b046b2a66f44c1ef3d3, type: 3}
-  - {fileID: 21300000, guid: 352f145eb88d552489e6929ab7900d1c, type: 3}
-  - {fileID: 21300000, guid: 690074cee04682d47a4cc49b6706b9e6, type: 3}
-  - {fileID: 21300000, guid: e8eb9cfe40c9d1045bc7aa805d0747cb, type: 3}
-  - {fileID: 21300000, guid: 49278b9fb675227499f8abe0b4de708c, type: 3}
-  - {fileID: 21300000, guid: 493c0ebf70ab9b641aac1775104d361f, type: 3}
-  m_PackedSpriteNamesToIndex:
-  - Puzzle_Polygon_02_02
-  - Puzzle_Polygon_05
-  - Puzzle_Polygon_01_13
-  - Puzzle_Polygon_01_15
-  - Puzzle_Polygon_02_03
-  - Puzzle_Polygon_01_16
-  - Puzzle_Polygon_01_03
-  - Puzzle_Polygon_01_14
-  - Puzzle_Polygon_05_Effect
-  - Puzzle_Polygon_02_05
-  - Puzzle_Polygon_01_02
-  - Puzzle_Polygon_02_Effect
-  - Puzzle_Polygon_03_04
-  - Ef_Skill1_Head
-  - Puzzle_Polygon_03_01
-  - Puzzle_Polygon_02_01
-  - Puzzle_Polygon_05_02
-  - Puzzle_Polygon_01_01
-  - Puzzle_Polygon_05_On
-  - Puzzle_Polygon_01_Effect
-  - Puzzle_Polygon_04_05
-  - Puzzle_Polygon_04_04
-  - Puzzle_Polygon_01_04
-  - Puzzle_Polygon_01_11
-  - Puzzle_Polygon_03
-  - Puzzle_Polygon_01_On
-  - Puzzle_Polygon_01_12
-  - Puzzle_Polygon_04_On
-  - Spin
-  - Puzzle_Polygon_04_03
-  - Puzzle_Polygon_04
-  - Puzzle_Polygon_05_04
-  - Puzzle_Polygon_05_01
-  - Puzzle_Polygon_03_02
-  - Puzzle_Polygon_02_04
-  - Puzzle_Polygon_04_01
-  - Puzzle_Polygon_05_05
-  - Puzzle_Polygon_02
-  - Puzzle_Polygon_01_06
-  - Puzzle_Polygon_04_Effect
-  - Puzzle_Polygon_01_05
-  - Puzzle_Polygon_04_02
-  - Puzzle_Polygon_01
-  - Puzzle_Polygon_03_05
-  - Puzzle_Polygon_03_Effect
-  - Puzzle_Polygon_05_03
-  - Puzzle_Polygon_03_03
-  - Puzzle_Polygon_03_On
-  - Puzzle_Polygon_02_On
+  m_PackedSprites: []
+  m_PackedSpriteNamesToIndex: []
   m_Tag: UI
   m_IsVariant: 0
