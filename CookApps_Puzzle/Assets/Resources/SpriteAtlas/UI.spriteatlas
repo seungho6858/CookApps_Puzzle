@@ -49,6 +49,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f070df124758328418d93e83b0ba3542, type: 3}
   - {fileID: 21300000, guid: caf50362fc5766649bbec80e91c7ede0, type: 3}
   - {fileID: 21300000, guid: 5b948953334da2e4294e7ca0f6d26047, type: 3}
+  - {fileID: 21300000, guid: d5388f838875cb142826c925524160de, type: 3}
   - {fileID: 21300000, guid: 053856a3700792d44a588c4d8ea07782, type: 3}
   - {fileID: 21300000, guid: c754f40428f3cfa429b73c5d4c832917, type: 3}
   - {fileID: 21300000, guid: 6039590414049334bb0ade43e4c3e68f, type: 3}
@@ -63,6 +64,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bacb0e48719720f48a8ea3728a7931ef, type: 3}
   - {fileID: 21300000, guid: a2450b9853bb1bb42b5091a60a4e336b, type: 3}
   - {fileID: 21300000, guid: 655dfbe8838c8c14d905ba91bfc0d68d, type: 3}
+  - {fileID: 21300000, guid: e5dc1ea9bf92845a381da3fc27d30eff, type: 3}
   - {fileID: 21300000, guid: 81167c2ac0c73f548bc138612cd1cc41, type: 3}
   - {fileID: 21300000, guid: c2c9937ae830ae545a352091fdd75db9, type: 3}
   - {fileID: 21300000, guid: 5caf0a1baf5603f49bca0bae72c3fd54, type: 3}
@@ -97,6 +99,7 @@ SpriteAtlas:
   - Puzzle_Polygon_01_02
   - Puzzle_Polygon_02_Effect
   - Puzzle_Polygon_03_04
+  - Ef_Skill1_Head
   - Puzzle_Polygon_03_01
   - Puzzle_Polygon_02_01
   - Puzzle_Polygon_05_02
@@ -111,6 +114,7 @@ SpriteAtlas:
   - Puzzle_Polygon_01_On
   - Puzzle_Polygon_01_12
   - Puzzle_Polygon_04_On
+  - Spin
   - Puzzle_Polygon_04_03
   - Puzzle_Polygon_04
   - Puzzle_Polygon_05_04

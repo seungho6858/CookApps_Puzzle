@@ -59,7 +59,7 @@ public class Helper : MonoBehaviour
 
     public static bool Is_SpecialBlock(Block_Type type)
     {
-        return type == Block_Type.Spin;
+        return type == Block_Type.Spin || type == Block_Type.BombBlock;
     }
     
     public static List<Block> Get_Explosive(Block block) // 특정 방향으로 3-Match, 4-Match
@@ -99,6 +99,8 @@ public class Helper : MonoBehaviour
                 return;
 
             Block nearBlock = nearPoint.Get_Block();
+            if (null == nearBlock)
+                return;
 
             if (nearBlock._type == type) // 같은 타입!
                 Match_3(dir, nearBlock, ref candidates);

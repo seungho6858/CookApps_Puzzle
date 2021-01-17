@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 7371035761345718209}
   - component: {fileID: 5142287240272437367}
   m_Layer: 0
-  m_Name: Drag
+  m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8845380883840583306
 RectTransform:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e89e0dd35090d0f4ca16c6c41f67a3cd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a1c958af494aa747a8bc9e2ea91463b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

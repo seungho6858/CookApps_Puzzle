@@ -6,12 +6,13 @@ public class Block : BaseComponent
 {
     public GameObject _active;
 
+    public GameObject[] _lines;
+
     public Block_Type _type;
     public float _dragLength;
     public bool _isMoving;
 
     public delegate void MoveBlock(Block block);
-
     public static MoveBlock _blockMoved;
 
     [SerializeField] private Point _point;
@@ -30,6 +31,18 @@ public class Block : BaseComponent
     public virtual void Explode()
     {
         _point.Return_Block();
+
+        Show_Lines(false);
+    }
+
+    public virtual List<Block> ExplodeOthers()
+    {
+        return null;
+    }
+
+    public virtual void Return()
+    {
+        BlockManager.instance.ReturnBlock(this);
     }
 
     public void BeginDrag()
@@ -60,6 +73,12 @@ public class Block : BaseComponent
                 StartCoroutine( Change_Block(nearPoint));
             }
         }
+    }
+
+    public void Show_Lines(bool b)
+    {
+        for (int i = 0; i < _lines.Length; ++i)
+            _lines[i].SetActive(b);
     }
 
     // 두 블럭 교체
@@ -113,7 +132,7 @@ public class Block : BaseComponent
 
     private IEnumerator Move(Vector3 vDir, Vector3 vEnd, System.Action finish)
     {
-        float time = 0.3f; // 이동 시간
+        float time = 0.2f; // 이동 시간
 
         _isMoving = true;
         vDir /= time;

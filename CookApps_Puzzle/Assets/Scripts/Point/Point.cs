@@ -25,7 +25,6 @@ public class Point : BaseComponent
         _text.text = _pos.ToString();
     }
 
-    [ContextMenu("Spawn")]
     public void Spawn_Block(Block_Type type)
     {
         Set_Block(BlockManager.instance.GetBlock(type));
@@ -48,7 +47,7 @@ public class Point : BaseComponent
     {
         if(null != _block)
         {
-            BlockManager.instance.ReturnBlock(_block);
+            _block.Return();
             _block = null;
         }
     }
@@ -64,7 +63,12 @@ public class Point : BaseComponent
 
     public Block Get_NearBlock(Dir dir)
     {
-        return Get_NearPoint(dir)._block;
+        Point pt = Get_NearPoint(dir);
+
+        if (pt == null)
+            return null;
+
+        return pt._block;
     }
 
     public Block Get_Block()

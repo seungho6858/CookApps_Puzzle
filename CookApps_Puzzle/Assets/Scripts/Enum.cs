@@ -9,7 +9,8 @@
     
     // Special
     Spin,
-    
+    BombBlock,
+
     Max
 }
 

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SpinBlock : Block
 {
+    public Transform _trRotate;
+
     private int _hp;
     
     private void OnEnable()
@@ -31,23 +33,24 @@ public class SpinBlock : Block
     {
         if (_hp > 1)
             return;
-        
-        _Tr.Rotate(0f, 0f, Time.deltaTime * 360f, Space.World);
-        
+
+        _trRotate.Rotate(0f, 0f, Time.deltaTime * 360f, Space.World);
     }
 
     public override void Explode()
     {
         Get_Point().Relase_Block();
-        
+
+        Show_Lines(false);
+
         StartCoroutine(Move());
     }
 
     private IEnumerator Move()
     {
-        float time = 1f;
+        float time = 0.3f;
 
-        Vector2 vDir = UIManager.instance._tSpin.transform.position - _Tr.position;
+        Vector2 vDir = (UIManager.instance._tSpin.transform.position - _Tr.position) / time;
         
         while (true)
         {
@@ -59,8 +62,8 @@ public class SpinBlock : Block
             
             yield return null;
         }
-        
-        BlockManager.instance.ReturnBlock(this);
+
+        Return();
         UIManager.instance.Get_Spin();
     }
 }
