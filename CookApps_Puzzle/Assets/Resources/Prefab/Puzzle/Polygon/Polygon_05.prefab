@@ -99,6 +99,7 @@ MonoBehaviour:
   _dragLength: 50
   _isMoving: 0
   _point: {fileID: 0}
+  _trImage: {fileID: 2409225368122856821}
   _trRotate: {fileID: 2409225368122856821}
 --- !u!114 &-1331179551087183558
 MonoBehaviour:

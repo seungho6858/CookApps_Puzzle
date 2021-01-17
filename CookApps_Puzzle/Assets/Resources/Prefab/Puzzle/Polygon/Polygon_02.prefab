@@ -287,6 +287,7 @@ MonoBehaviour:
   _dragLength: 50
   _isMoving: 0
   _point: {fileID: 0}
+  _trImage: {fileID: 1982235277641728661}
 --- !u!114 &-2047059940841839092
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,6 +19,9 @@ public class Block : BaseComponent
     private Vector3 _vDragInit;
     private bool _dragging;
 
+    public Transform _trImage;
+    private bool _hint;
+
     public void Set_Point(Point point)
     {
         _point = point;
@@ -49,6 +52,8 @@ public class Block : BaseComponent
     {
         _vDragInit = Get_Pos();
         _dragging = true;
+
+        MapManager.instance.Hide_Hint();
     }
 
     public void Drag()
@@ -79,6 +84,8 @@ public class Block : BaseComponent
     {
         for (int i = 0; i < _lines.Length; ++i)
             _lines[i].SetActive(b);
+
+        _hint = b;
     }
 
     // 두 블럭 교체
@@ -194,7 +201,7 @@ public class Block : BaseComponent
     {
         Point srcPoint = Get_Point();
 
-        Debug.Log(" : " + srcPoint.name + " -> " + dstPoint);
+        //Debug.Log(" : " + srcPoint.name + " -> " + dstPoint);
 
         Vector3 vDir = dstPoint.Get_Pos() - Get_Pos();
 
@@ -214,5 +221,75 @@ public class Block : BaseComponent
     public virtual bool Get_Damage()
     {
         return false;
+    }
+
+    public HintInfo Hint()
+    {
+        for(int i =0; i<(int) Dir.Max; ++i)
+        {
+            Point nearPoint = Get_Point().Get_NearPoint((Dir)i);
+            if (null == nearPoint)
+                continue;
+
+            // 이전 블럭 임시 저장
+            Block before = nearPoint.Get_Block(); 
+            Block_Type beforeType = before._type;
+
+            before._type = _type;
+
+            List<Block> explosive = Helper.Get_Explosive(before); // 타입이 바뀐 그 블럭은 터질 수 있나?
+
+            before._type = beforeType;
+
+            if (explosive.Count != 0 && !explosive.Contains(this)) // 힌트 성공!
+            {
+                HintInfo hint = new HintInfo();
+                hint.explosive = explosive;
+                hint.moveDir = (Dir)i;
+                hint.moveBlock = this;
+
+                //explosive.Add(this);
+
+                return hint;
+            }
+        }
+
+        return null;
+    }
+
+    public void Move_Hint(Dir dir)
+    {
+        _hint = true;
+        StartCoroutine(HintMode(dir));
+    }
+
+    private IEnumerator HintMode(Dir dir)
+    {
+        Vector2 vDir = _lines[(int)dir].transform.position - Get_Pos();
+        float angle = 0f;
+        Vector2 vOrigin = _trImage.position;
+
+        while(true)
+        {
+            if (!_hint)
+            {
+                _trImage.position = vOrigin;
+                break;
+            }
+                
+            angle += Time.deltaTime * 5f;
+            _trImage.Translate(vDir * Mathf.Cos(angle) * Time.deltaTime);
+
+            yield return null;
+        }
+
+    }
+
+    public class HintInfo
+    {
+        public List<Block> explosive;
+
+        public Block moveBlock;
+        public Dir moveDir;
     }
 }

@@ -238,7 +238,7 @@ RectTransform:
   - {fileID: 1619179354}
   - {fileID: 1495763120}
   m_Father: {fileID: 822046332}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1394,7 +1394,7 @@ RectTransform:
   - {fileID: 707975298}
   - {fileID: 989677519}
   m_Father: {fileID: 822046332}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1857,7 +1857,7 @@ RectTransform:
   - {fileID: 1523634019}
   - {fileID: 657310973}
   m_Father: {fileID: 822046332}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1889,15 +1889,15 @@ GameObject:
   m_Component:
   - component: {fileID: 657310973}
   - component: {fileID: 657310976}
-  - component: {fileID: 657310975}
   - component: {fileID: 657310974}
+  - component: {fileID: 657310975}
   m_Layer: 5
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &657310973
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1962,7 +1962,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 406215394}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ReGame
+        m_MethodName: Hint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2592,9 +2592,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 406215393}
   - {fileID: 356432911}
   - {fileID: 82070012}
-  - {fileID: 406215393}
   m_Father: {fileID: 1365886924}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3841,8 +3841,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1222562704}
   - component: {fileID: 1222562706}
-  - component: {fileID: 1222562705}
   - component: {fileID: 1222562707}
+  - component: {fileID: 1222562705}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged

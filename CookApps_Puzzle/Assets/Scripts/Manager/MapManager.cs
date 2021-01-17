@@ -49,7 +49,7 @@ public class MapManager : Singleton_Awake<MapManager>
         _block.raycastTarget = b;
     }
 
-    private HashSet<Block> Get_Explodes() // 현재 맵에서 터질 수 있는 Block들 체크 & Return
+    public HashSet<Block> Get_Explodes() // 현재 맵에서 터질 수 있는 Block들 체크 & Return
     {
         HashSet<Block> explodes = new HashSet<Block>();
 
@@ -172,5 +172,41 @@ public class MapManager : Singleton_Awake<MapManager>
 
             return blockByBomb;
         }
+    }
+
+    public IEnumerator Hint()
+    {
+        Hide_Hint();
+
+        yield return null;
+
+        int rand = Random.Range(0, _listPoints.Count); // 매번 다른 순서로 힌트 검색
+
+        for(int i = rand ; ; i++)
+        {
+            if (i >= _listPoints.Count)
+                i = 0;
+
+            if (i == rand - 1) // 한바퀴 다 돎
+                break;
+
+            Block block = _listPoints[i].Get_Block();
+
+            Block.HintInfo hintInfo = block.Hint();
+
+            if (null == hintInfo)
+                continue;
+
+            hintInfo.explosive.ForEach(x => x.Show_Lines(true));
+            hintInfo.moveBlock.Move_Hint(hintInfo.moveDir);
+
+            break;
+        }
+
+    }
+
+    public void Hide_Hint()
+    {
+        _listPoints.ForEach(x => x.Get_Block().Show_Lines(false));
     }
 }

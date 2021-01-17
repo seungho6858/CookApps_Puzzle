@@ -68,4 +68,9 @@ public class UIManager : Singleton_Awake<UIManager>
             Show_Popup("게임 클리어", ReGame);
         }
     }
+
+    public void Hint()
+    {
+        StartCoroutine( MapManager.instance.Hint());
+    }
 }
